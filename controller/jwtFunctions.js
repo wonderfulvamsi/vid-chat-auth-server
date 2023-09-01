@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const verify_token = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+    const authHeader = req.body.authorization;
     if (authHeader) {
         const token = authHeader.split(" ")[1];
         jwt.verify(token, process.env.JWT_ACCESS_PRIVATE_KEY, (err, user) => {
@@ -18,7 +18,7 @@ const verify_token = (req, res, next) => {
 
 const generateAccessToken = (user) => {
     return jwt.sign({ email: user.email }, process.env.JWT_ACCESS_PRIVATE_KEY, {
-        expiresIn: "10m",
+        expiresIn: "10s",
     });
 };
 

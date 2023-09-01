@@ -71,6 +71,7 @@ router.post("/login", async (req, res) => {
 
 //Refresh token 
 router.post("/jwt/refresh", (req, res) => {
+    console.log("@ midlewarre",req.body)
     //take the refresh token from the user
     const refreshToken = req.body.token;
 

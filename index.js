@@ -20,8 +20,10 @@ connection.once('open', () => {
 })
 
 const authRouter = require('./routes/auth');
+const roomRouter = require('./routes/room');
 
 app.use('/auth', authRouter);
+app.use('/room', roomRouter);
 
 app.get('/', (req, res) => {
   res.send('<h1>Hey, this is the Auth-Server to handel all the Auth related shit.</h1>');
